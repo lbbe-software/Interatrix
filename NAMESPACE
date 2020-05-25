@@ -1,0 +1,22 @@
+import("MASS")
+import("tkrplot")
+import("tcltk")
+importFrom("tools", "file_ext")
+importFrom("graphics", "box", "hist", "points")
+importFrom("grDevices", "dev.off", "graphics.off", "jpeg", "pdf", "png", "postscript")
+importFrom("stats", "as.formula", "binomial", "glm", "model.matrix", "na.omit", "optim", "pchisq", "rmultinom", "runif")
+importFrom("utils", "read.table", "read.csv")
+
+export(
+  "InteratrixGUI",
+  "chi2Corr",
+  "chi2CorrAge",
+  "calcInfectProba",
+  "SensTransMatrix",
+  "EstimParam",
+  "ModelClass" 
+)
+
+
+
+

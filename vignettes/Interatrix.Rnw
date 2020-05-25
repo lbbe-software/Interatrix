@@ -1,0 +1,263 @@
+\documentclass[10pt,a4paper,french]{article}
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{natbib, url}
+\usepackage{ucs}
+\usepackage{longtable}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{color, colortbl}
+\usepackage{fullpage}% sans marge
+\renewcommand{\baselinestretch}{1}% definition interligne
+\usepackage{lmodern}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{lscape}
+\usepackage{graphicx}
+\usepackage[nottoc,numbib]{tocbibind}
+\parindent=0pt \parskip=0pt
+%\VignetteIndexEntry{Using the Interatrix package}
+
+\title{The \texttt{Interatrix} package}
+\author{Aurélie Siberchicot, Eléonore Hellard, Dominique Pontier,\\
+David Fouchet and Franck Sauvage}
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+\maketitle
+\texttt{Interatrix} is a user-friendly \texttt{R} program to detect likely pairewise parasite interactions with presence-absence data while taking known risk factors into account.
+The two methods it includes are based on corrections of the chi-square test of independence and on logistic regressions.
+The first method corrects for known risk factors of the parasites; it is described in~\cite{Hellard2012}.
+The second method also corrects also for the cumulative effect of age when age is unknown; it is described in~\cite{Hellard2014}.\\
+
+Following is a tutorial detailing the main tasks you will carry out to estimate the corrected chi-square using the \texttt{Interatrix} package.
+This tutorial begins by helping you to install \texttt{Interatrix} and his dependencies. 
+It then describes the type and format of data useable in \texttt{Interatrix}.
+The two ways to use \texttt{Interatrix} (through a graphical interface or through command lines) are then detailed step by step.
+An optional parallel computing is proposed.
+Finally, an example based on a theoretical data set available with the package is presented.
+
+\tableofcontents
+\newpage
+
+
+\section{Install and launch \texttt{Interatrix}}
+
+\subsection{Initial installation}
+\texttt{Interatrix} is a package developped in the \texttt{R} software whose sources are available on \url{http://cran.r-project.org/}.
+The \texttt{R} software must be installed in such a way that graphical interfaces can run once the appropriate packages are later installed.
+On Windows and Mac OS, this is automatically computed when the \texttt{R} software is installed.
+On Linux, the two libraries \textit{tcl} and \textit{tk} must be installed and \texttt{R} must be installed using the \textit{--with-tcltk} option (see the \texttt{R Installation and Administration} manual on \texttt{CRAN}).\\
+
+Once \texttt{R} is installed, the package \texttt{Interatrix} and its dependencies \texttt{tcltk}, \texttt{tkrplot} and \texttt{tools} must be installed using the command \texttt{install.packages()} in an \texttt{R} session.
+You will also need to install \texttt{doParallel} and \texttt{foreach} if you plan to use parallel computing (see section~\ref{parallel}).
+
+
+\subsection{Start with Interatrix}
+To launch \texttt{Interatrix} in an \texttt{R} session, the package must be loaded using \texttt{library(Interatrix)}.
+The two methods previously cited can be used either through a graphical interface or with command lines.
+
+
+\section{Data}
+\label{data}
+To use as an example, the \texttt{Interatrix} package holds a data set of 100 individual hosts tested for two parasites and containing missing data. 
+It is made of 5 randomly generated host risk factors: 2 quantitative (\textit{F2} and \textit{F4}, sampled in a standard normal distribution) and 3 qualitative (\textit{F1}, \textit{F3} and \textit{AGE},
+among which \textit{AGE} gives the host age classes) and 2 serological statuses (\textit{Parasite1} and \textit{Parasite2}, all individuals having an independent 0.5 probability of being seropositive for each parasite).
+These data are in the \texttt{dataInteratrix.rda} \texttt{R} binary file.\\
+
+When using your own data set, the input data must be a data frame including data for host individuals tested for both studied parasites, with the observed values of risk factors and serological statuses as columns and the host individuals as rows.
+The extension of the data file must be \textit{txt} (data are separated by tabulations and the variables' name are in the first row), \textit{csv} (data are separated by comma and the variables' name are in the first row), \textit{rda}, \textit{Rda}, \textit{rdata} or \textit{Rdata}.
+Missing data are allowed but individuals with at least one missing data are omitted in the model. Missing data must be indicated by \texttt{NA}.\\
+Qualitative variables must be defined as factors in \texttt{R} (see the \texttt{as.factor} function). This is mainly needed when the explicit functions are used.
+Binary variables must be defined with the modalities \texttt{0} and \texttt{1}.
+
+
+\section{Using the graphical interface}
+Use the \texttt{InteratrixGUI()} function to start the graphical interface. Dialog boxes will lead you step by step.\\
+
+(1) In a first step, you must choose one of the two methods available in the \texttt{Interatrix} package and validate your choice in a window like shown in Figure~\ref{fig:0}.\\
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.4\textwidth]{im0.png}
+\caption{Dialog window to choose one of the two methods}
+\label{fig:0}
+\end{figure}
+
+(2) Then, you must indicate the location of the file containing the data to analyse. 
+If you want to use the example data set (\textit{dataInteratrix.rda}), go to the folder \texttt{data} of the \texttt{Interatrix} package.\\
+
+(3) The graphical interface depends on the selected method. 
+A window like in Figure~\ref{fig:1} or in Figure~\ref{fig:2} will appear when the first or the second method is chosen, respectively.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth]{im1.png}
+\caption{Dialog window appearing when the corrected chi2 method is applied to the test data set}
+\label{fig:1}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth]{im2.png}
+\caption{Dialog window appearing when the corrected chi2 accounting also for the cumulative effect of age is applied on the test data set}
+\label{fig:2}
+\end{figure}
+
+In both cases, you must designate the variables that must be defined as factors and the two variables of serological statuses (the software will automatically convert these variables into factors).
+Moreover, the model formula (i.e., a symbolic description of the model of risk factors) and the number of wanted bootstraps (500 by default) must be filled.
+
+The second method is more complex and needs more parameters. 
+You must define the antibodies' disappearance rate of each parasite, select the age class variable and define the mortality rate of each age class (the values must be separated by ';', e.g., 0.2;0.2;0.2) 
+and the bounds of these classes (the values must be separated by ';', e.g., 0;1;2;10).\\
+
+(4) You must indicate in which directory the results should be saved and the name and format of the graph that will be created. The graph can be an \textit{eps}, a \textit{pdf}, a \textit{png} or a \textit{jpeg} file. \\
+
+(5) Depending on the size of the data, the model complexity and the number of simulations, calculations may take some time and a waiting window (Figure~\ref{fig:3}) may appear. 
+At the end of the simulations, results are stored in the chosen directory and a summary is printed to the \texttt{R} console.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.25\textwidth]{im3.png}
+\caption{Waiting message}
+\label{fig:3}
+\end{figure}
+
+When using the second method, parallel computing is proposed to speed up simulations (see section~\ref{parallel}).
+
+
+\section{Through command lines}
+When using the explicit functions, data must be loaded thanks to the command \texttt{read.table} (for \textit{txt} file), \texttt{read.csv} (for \textit{csv} file) or \texttt{load} (for \texttt{R} binary file).
+As mentionned previously, all qualitative variables must be defined as factors (see the \texttt{as.factor} function).\\
+
+There are two functions, one for each method: \textit{chi2Corr} (accounting for risk factors) and \textit{chi2CorrAge} (accounting for risk factors and for the cumulative effect of age).\\
+
+(1) The \textit{chi2Corr} function is written:
+\begin{center}
+\textit{chi2Corr(formula, data.obs, namepara1, namepara2, nsimu)}
+\end{center}
+and takes as parameters:
+\begin{itemize}
+ \item a formula (a string of characters), 
+ \item a data set (a data frame formatted as indicated in section~\ref{data}),
+ \item the name of the variables corresponding to the serological statuses of the two parasites (two strings of characters) and
+ \item the number of simulations (an integer).
+\end{itemize} 
+\vspace{0.8cm}
+
+(2) The \textit{chi2CorrAge} function is written:
+\begin{center}
+\textit{chi2CorrAge(formula, data.obs, namepara1, namepara2, nameage, w1, w2, mort, a, nsimu, nbcore = 3)}
+\end{center}
+and takes as parameters:
+\begin{itemize}
+ \item a formula (a string of characters), 
+ \item a data set (a data frame formatted as indicated in section~\ref{data}),
+ \item the name of the variables corresponding to the serological statuses of the two parasites (two strings of characters), 
+ \item the name of the age variable (a string of characters), 
+ \item the antibodies' disappearance rate of each parasite (two real numbers between 0 and 1), 
+ \item the host mortality rate within each age class (a vector of real numbers between 0 et 1, with one value per age class, separated by ',', e.g., c(0.2,0.2,0.2)), 
+ \item the bounds of the age classes (a vector of integers with as many values as there are age classes minus one, separated by ',', e.g., c(0,1,2,10)), 
+ \item the number of simulations (an integer) and 
+ \item the number of cores available to set up parallel computing (3 by default ; see next paragraph).
+\end{itemize}
+
+
+\section{Parallel computing}
+\label{parallel}
+Because it is more complex to solve and takes longer to run, we recommand to use parallel computing to optimize calculations when using the second method. 
+It requires two librairies in \texttt{R}: \texttt{doParallel} and \texttt{foreach}. They must be installed and loaded when \texttt{Interatrix} is loaded.\\
+
+With the graphical software version, an intermediate dialog window (Figure~\ref{fig:4}) proposes to parallelize or not the calculations. 
+The software detects automatically the number of cores available to set up the parallel computing. 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.4\textwidth]{im4.png}
+\caption{Dialog window for parallel computing}
+\label{fig:4}
+\end{figure}
+
+Via command lines, the user can define the optimal number of cores allocated for simulations (parameter \textit{nbcore}).
+
+
+\section{Example with \texttt{dataInteratrix.rda} using the graphical interface}
+
+\subsection{First method: chi-square corrected for risks factors (\texttt{chi2Corr} function)}
+Parameters taken in the example:
+\begin{itemize}
+ \item formula = \textquotedbl $F1+F2*F3+F4$ \textquotedbl
+ \item data.obs = \textquotedbl dataInteratrix\textquotedbl
+ \item namepara1 = \textquotedbl Parasite1\textquotedbl
+ \item namepara2 = \textquotedbl Parasite2\textquotedbl
+ \item nsimu = 1000
+\end{itemize} 
+
+\vspace{0.8cm}
+An object named \texttt{simu\_chi2corr} is created and printed to the \texttt{R} console. It is a list of several statistics resulting from the simulations and reachable with \texttt{\$}.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.4\textwidth]{simu1.png}
+\end{figure}
+
+When a new experience is run with the same parameters, the dispersion coefficient (\texttt{simu\_chi2corr\$dispcoeff}) and the two p-values (\texttt{simu\_chi2corr\$pval1} and \texttt{simu\_chi2corr\$pval2}) may be different but close because they result from bootstrapped simulations.\\
+
+The expected frequencies (\texttt{simu\_chi2corr\$tab.th}) are the frequencies of hosts in each combination of serological statuses expected under the independence hypothesis and considering the risk factors. 
+They are calculated with the bootstrapped data.\\
+Note that two p-values are printed to the consol; they are defined in~\cite{Hellard2012}.\\
+
+In this example, the test is not significant; the observed corrected chi-square is within the bootstrapped distribution (red star in Figure~\ref{fig:6}). 
+The conclusion is that the proportion of doubly positive hosts can be explained without invoking an interaction between the two parasites.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{ex1.png}
+\caption{Distribution of 1000 bootstrapped corrected chi-square values using the first method and value of the observed corrected chi-square (red star)}
+\label{fig:6}
+\end{figure}
+
+
+
+\subsection{Second method: chi-square corrected for risks factors and for the cumulative effect of age (\texttt{chi2CorrAge} function)}
+Parameters taken in the example:
+\begin{itemize}
+ \item formula = \textquotedbl $F1+F2+AGE$ \textquotedbl
+ \item data.obs = \textquotedbl dataInteratrix\textquotedbl
+ \item namepara1 = \textquotedbl Parasite1\textquotedbl
+ \item namepara2 = \textquotedbl Parasite2\textquotedbl
+ \item nameage = \textquotedbl AGE\textquotedbl
+ \item w1 = 0
+ \item w2 = 0
+ \item mort = 0.2;0.2;0.2
+ \item a = 0;1;2;10
+ \item nsimu = 1000
+ \item nbcore = 3
+\end{itemize} 
+
+\vspace{0.8cm}
+An object named \texttt{simu\_chi2corrage} is created and printed to the \texttt{R} console. It is a list of several statistics resulting from the simulations and reachable with \texttt{\$}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.4\textwidth]{simu2.png}
+\end{figure}
+
+When a new experience is run with the same parameters, the p-value (\texttt{simu\_chi2corrage\$pval}) may be different but close because it results from bootstrapped simulations.\\
+
+The expected frequencies (\texttt{simu\_chi2corrage\$tab.th}) are the frequencies of hosts in each combination of serological statuses expected under the independence hypothesis, considering the risk factors and the cumulative effect of age. 
+They are calculated with the bootstrapped data.\\
+
+In this example, the test is not significant and the observed corrected chi-square is whithin the bootstrapped distribution (red star in Figure~\ref{fig:8}). 
+The proportion of doubly positive hosts can be explained by the identified risk factors and the cumulative effect of age.
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{ex2.png}
+\caption{Distribution of 1000 bootstrapped corrected chi-square values using the second method and value of the observed corrected chi-square (red star)}
+\label{fig:8}
+\end{figure}
+
+% \section{References}
+
+\bibliographystyle{unsrt}
+\bibliography{biblio}
+\end{document}

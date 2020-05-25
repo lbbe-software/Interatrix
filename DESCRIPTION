@@ -1,0 +1,13 @@
+Package: Interatrix
+Type: Package
+Title: Compute Chi-Square Measures with Corrections
+Version: 1.1.2
+Date: 2016-11-17
+Author: Aurélie Siberchicot, Eléonore Hellard, Dominique Pontier, David Fouchet and Franck Sauvage
+Maintainer: Aurélie Siberchicot <aurelie.siberchicot@univ-lyon1.fr>
+Description: Chi-square tests are computed with corrections.
+Depends: R (>= 2.14)
+Imports: graphics, grDevices, MASS, stats, tcltk, tkrplot, tools, utils
+Suggests: doParallel, foreach
+License: GPL (>= 2)
+Encoding: UTF-8
