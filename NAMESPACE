@@ -1,5 +1,4 @@
 import("MASS")
-import("tkrplot")
 import("tcltk")
 importFrom("tools", "file_ext")
 importFrom("graphics", "box", "hist", "points")
@@ -16,7 +15,3 @@ export(
   "EstimParam",
   "ModelClass" 
 )
-
-
-
-
