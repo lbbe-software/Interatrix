@@ -80,7 +80,6 @@ jobs:
         run: |
           remotes::install_deps(dependencies = TRUE)
           remotes::install_cran("rcmdcheck")
-          tinytex::tlmgr_install("bera")
         shell: Rscript {0}
 
       - name: Check
