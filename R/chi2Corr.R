@@ -1,6 +1,6 @@
 chi2Corr <- function(formula, data.obs, namepara1, namepara2, nsimu) {
    
-  ## check valididy
+  ## check validity
   if(nsimu <= 0 | is.na(nsimu) | !is.numeric(nsimu))
     stop("'nsimu' must be a positive number")
   if(class(formula) != "character")
