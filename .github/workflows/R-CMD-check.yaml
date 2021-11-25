@@ -86,6 +86,7 @@ jobs:
           tinytex::parse_install(text = "! LaTeX Error: File `fullpage.sty' not found.")
           tinytex::parse_install(text = "! LaTeX Error: File `multirow.sty' not found.")
           tinytex::parse_install(text = "! LaTeX Error: File `tocbibind.sty' not found.")
+          tinytex::parse_install(text = "! LaTeX Error: File `ae.sty' not found.")
         shell: Rscript {0}
 
       - name: Check
