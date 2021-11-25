@@ -47,7 +47,7 @@ jobs:
       - name: Install libraries for Linux
         if: runner.os == 'Linux'
         run: |
-          sudo apt-get install texlive-base texlive-fonts-extra texlive-latex-recommended texlive-latex-extra texlive-science texlive-lang-all
+          sudo apt-get install texlive-base texlive-fonts-extra texlive-latex-recommended texlive-latex-extra texlive-science texlive-lang-all libcurl4-openssl-dev
 
       - name: Query dependencies
         run: |
