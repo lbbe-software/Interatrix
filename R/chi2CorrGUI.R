@@ -81,7 +81,7 @@ of serological statuses", font = font2), choose.par)
     
     if(length(ParChoice) != 2)
       tkmessageBox(message = "Please select the two columns of serologic statuses.")
-    else if(class(formul) != "character")
+    else if(!inherits(formul, "character"))
       tkmessageBox(message = "Please enter a model formula.")
     else if(sim <= 0 | is.na(sim) | !is.numeric(sim))
       tkmessageBox(message = "Please enter a positive number of simulations.")

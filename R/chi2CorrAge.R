@@ -9,7 +9,7 @@ chi2CorrAge <- function(formula, data.obs, namepara1, namepara2, nameage, w1, w2
     stop("'mort' and 'a' must be numeric")
   if(length(a) != length(mort) + 1)
     stop("'mort' must have the length of 'a' plus 1")
-  if(class(formula) != "character")
+  if(!inherits(formula, "character"))
     stop("'formula' must be a string of character")
   if(!is.character(namepara1) | !is.character(namepara2) | !is.character(nameage))
     stop("'namepara1', 'namepara2' and 'nameage' must be strings of character")
