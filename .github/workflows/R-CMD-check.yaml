@@ -9,6 +9,9 @@ on:
 
 name: R-CMD-check
 
+
+permissions: read-all
+
 jobs:
   R-CMD-check:
     runs-on: ${{ matrix.config.os }}
@@ -31,6 +34,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+      
+      - uses: quarto-dev/quarto-actions/setup@v2
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          version: ${{ matrix.config.quarto || 'release' }}
+          tinytex: true
       
       - uses: r-lib/actions/setup-pandoc@v2
 
