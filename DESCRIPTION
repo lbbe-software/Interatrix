@@ -12,3 +12,4 @@ License: GPL (>= 2)
 Encoding: UTF-8
 URL: https://github.com/lbbe-software/Interatrix
 BugReports: https://github.com/lbbe-software/Interatrix/issues
+VignetteBuilder: quarto
