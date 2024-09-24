@@ -30,7 +30,7 @@ Finally, an example based on a theoretical data set available with the package i
 
 ### Initial installation
 
-`Interatrix` is a package developped in the `R` software whose sources are available on [http://cran.r-project.org/](http://cran.r-project.org/).
+`Interatrix` is a package developped in the `R` software whose sources are available on [https://cran.r-project.org/](https://cran.r-project.org/).
 The `R` software must be installed in such a way that graphical interfaces can run once the appropriate packages are later installed.
 On Windows and Mac OS, this is automatically computed when the `R` software is installed.
 On Linux, the two libraries *tcl* and *tk* must be installed and `R` must be installed using the *--with-tcltk* option (see the `R Installation and Administration` manual on CRAN).
