@@ -50,7 +50,7 @@ jobs:
       - name: Install libraries for linux
         if: runner.os == 'Linux'
         run: |
-          sudo apt-get install texlive-base texlive-latex-recommended texlive-latex-extra
+          sudo apt-get install libcurl4-openssl-dev texlive tcl8.6-dev tk8.6-dev
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
