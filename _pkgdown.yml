@@ -1,6 +1,7 @@
 template:
   bootstrap: 5
   bootswatch: flatly
+  math-rendering: katex
 
 bslib:
   primary: "#433625"
