@@ -138,7 +138,7 @@ Figure 4: Waiting message
 </h2>
 <p>When using the explicit functions, data must be loaded thanks to the function <code><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.table()</a></code> (for <em>txt</em> file), <code><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv()</a></code> (for <em>csv</em> file) or <code><a href="https://rdrr.io/r/base/load.html" class="external-link">load()</a></code> (for <code>R</code> binary file). As mentionned previously, all qualitative variables must be defined as factors (see the <code><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor()</a></code> function).</p>
 <p>There are two functions, one for each method: <em>chi2Corr</em> (accounting for risk factors) and <em>chi2CorrAge</em> (accounting for risk factors and for the cumulative effect of age).</p>
-<p>The <em>chi2Corr</em> function is written: <span class="math inline">chi2Corr(formula, data.obs, namepara1, namepara2, nsimu)</span></p>
+<p>The <em>chi2Corr</em> function is written: <span class="math display">chi2Corr(formula, data.obs, namepara1, namepara2, nsimu)</span></p>
 <p>and takes as parameters:</p>
 <ul>
 <li>a formula (a string of characters),</li>
@@ -146,7 +146,7 @@ Figure 4: Waiting message
 <li>the name of the variables corresponding to the serological statuses of the two parasites (two strings of characters) and</li>
 <li>the number of simulations (an integer).</li>
 </ul>
-<p>The <em>chi2CorrAge</em> function is written: <span class="math inline">chi2CorrAge(formula, data.obs, namepara1, namepara2, nameage, w1, w2, mort, a, nsimu, nbcore = 3)</span></p>
+<p>The <em>chi2CorrAge</em> function is written: <span class="math display">chi2CorrAge(formula, data.obs, namepara1, namepara2, nameage, w1, w2, mort, a, nsimu, nbcore = 3)</span></p>
 <p>and takes as parameters:</p>
 <ul>
 <li>a formula (a string of characters),</li>
@@ -180,7 +180,7 @@ Figure 5: Dialog window for parallel computing
 </h3>
 <p>Parameters taken in the example:</p>
 <ul>
-<li>formula = <span class="math inline">F1+F2*F3+F4</span> </li>
+<li>formula = <span class="math display">F1+F2*F3+F4</span> </li>
 <li>data.obs = dataInteratrix</li>
 <li>namepara1 = Parasite1</li>
 <li>namepara2 = Parasite2</li>
@@ -204,7 +204,7 @@ Figure 6: Distribution of 1000 bootstrapped corrected chi-square values using t
 </h3>
 <p>Parameters taken in the example:</p>
 <ul>
-<li>formula = <span class="math inline">F1+F2+AGE</span> </li>
+<li>formula = <span class="math display">F1+F2+AGE</span> </li>
 <li>data.obs = dataInteratrix</li>
 <li>namepara1 = Parasite1</li>
 <li>namepara2 = Parasite2</li>
