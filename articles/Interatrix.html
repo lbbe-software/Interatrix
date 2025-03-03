@@ -6,11 +6,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>The Interatrix package • Interatrix</title>
-<script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script src="../katex-auto.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><script src="Interatrix_files/libs/quarto-html/popper.min.js"></script><script src="Interatrix_files/libs/quarto-html/tippy.umd.min.js"></script><link href="Interatrix_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><link href="../deps/KaTex-0.16.10/katex.min.css" rel="stylesheet">
+<script src="../deps/KaTex-0.16.10/katex.min.js"></script><script src="Interatrix_files/libs/quarto-html/popper.min.js"></script><script src="Interatrix_files/libs/quarto-html/tippy.umd.min.js"></script><link href="Interatrix_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="Interatrix_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="The Interatrix package">
 </head>
@@ -137,7 +138,7 @@ Figure 4: Waiting message
 </h2>
 <p>When using the explicit functions, data must be loaded thanks to the function <code><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.table()</a></code> (for <em>txt</em> file), <code><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv()</a></code> (for <em>csv</em> file) or <code><a href="https://rdrr.io/r/base/load.html" class="external-link">load()</a></code> (for <code>R</code> binary file). As mentionned previously, all qualitative variables must be defined as factors (see the <code><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor()</a></code> function).</p>
 <p>There are two functions, one for each method: <em>chi2Corr</em> (accounting for risk factors) and <em>chi2CorrAge</em> (accounting for risk factors and for the cumulative effect of age).</p>
-<p>The <em>chi2Corr</em> function is written: <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mi>h</mi><mi>i</mi><mn>2</mn><mi>C</mi><mi>o</mi><mi>r</mi><mi>r</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>f</mi><mi>o</mi><mi>r</mi><mi>m</mi><mi>u</mi><mi>l</mi><mi>a</mi><mo>,</mo><mi>d</mi><mi>a</mi><mi>t</mi><mi>a</mi><mi>.</mi><mi>o</mi><mi>b</mi><mi>s</mi><mo>,</mo><mi>n</mi><mi>a</mi><mi>m</mi><mi>e</mi><mi>p</mi><mi>a</mi><mi>r</mi><mi>a</mi><mn>1</mn><mo>,</mo><mi>n</mi><mi>a</mi><mi>m</mi><mi>e</mi><mi>p</mi><mi>a</mi><mi>r</mi><mi>a</mi><mn>2</mn><mo>,</mo><mi>n</mi><mi>s</mi><mi>i</mi><mi>m</mi><mi>u</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">chi2Corr(formula, data.obs, namepara1, namepara2, nsimu)</annotation></semantics></math></p>
+<p>The <em>chi2Corr</em> function is written: <span class="math inline">chi2Corr(formula, data.obs, namepara1, namepara2, nsimu)</span></p>
 <p>and takes as parameters:</p>
 <ul>
 <li>a formula (a string of characters),</li>
@@ -145,7 +146,7 @@ Figure 4: Waiting message
 <li>the name of the variables corresponding to the serological statuses of the two parasites (two strings of characters) and</li>
 <li>the number of simulations (an integer).</li>
 </ul>
-<p>The <em>chi2CorrAge</em> function is written: <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mi>h</mi><mi>i</mi><mn>2</mn><mi>C</mi><mi>o</mi><mi>r</mi><mi>r</mi><mi>A</mi><mi>g</mi><mi>e</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>f</mi><mi>o</mi><mi>r</mi><mi>m</mi><mi>u</mi><mi>l</mi><mi>a</mi><mo>,</mo><mi>d</mi><mi>a</mi><mi>t</mi><mi>a</mi><mi>.</mi><mi>o</mi><mi>b</mi><mi>s</mi><mo>,</mo><mi>n</mi><mi>a</mi><mi>m</mi><mi>e</mi><mi>p</mi><mi>a</mi><mi>r</mi><mi>a</mi><mn>1</mn><mo>,</mo><mi>n</mi><mi>a</mi><mi>m</mi><mi>e</mi><mi>p</mi><mi>a</mi><mi>r</mi><mi>a</mi><mn>2</mn><mo>,</mo><mi>n</mi><mi>a</mi><mi>m</mi><mi>e</mi><mi>a</mi><mi>g</mi><mi>e</mi><mo>,</mo><mi>w</mi><mn>1</mn><mo>,</mo><mi>w</mi><mn>2</mn><mo>,</mo><mi>m</mi><mi>o</mi><mi>r</mi><mi>t</mi><mo>,</mo><mi>a</mi><mo>,</mo><mi>n</mi><mi>s</mi><mi>i</mi><mi>m</mi><mi>u</mi><mo>,</mo><mi>n</mi><mi>b</mi><mi>c</mi><mi>o</mi><mi>r</mi><mi>e</mi><mo>=</mo><mn>3</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">chi2CorrAge(formula, data.obs, namepara1, namepara2, nameage, w1, w2, mort, a, nsimu, nbcore = 3)</annotation></semantics></math></p>
+<p>The <em>chi2CorrAge</em> function is written: <span class="math inline">chi2CorrAge(formula, data.obs, namepara1, namepara2, nameage, w1, w2, mort, a, nsimu, nbcore = 3)</span></p>
 <p>and takes as parameters:</p>
 <ul>
 <li>a formula (a string of characters),</li>
@@ -179,8 +180,7 @@ Figure 5: Dialog window for parallel computing
 </h3>
 <p>Parameters taken in the example:</p>
 <ul>
-<li>formula = <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mn>1</mn><mo>+</mo><mi>F</mi><mn>2</mn><mo>*</mo><mi>F</mi><mn>3</mn><mo>+</mo><mi>F</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">F1+F2*F3+F4</annotation></semantics></math>
-</li>
+<li>formula = <span class="math inline">F1+F2*F3+F4</span> </li>
 <li>data.obs = dataInteratrix</li>
 <li>namepara1 = Parasite1</li>
 <li>namepara2 = Parasite2</li>
@@ -204,8 +204,7 @@ Figure 6: Distribution of 1000 bootstrapped corrected chi-square values using t
 </h3>
 <p>Parameters taken in the example:</p>
 <ul>
-<li>formula = <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mn>1</mn><mo>+</mo><mi>F</mi><mn>2</mn><mo>+</mo><mi>A</mi><mi>G</mi><mi>E</mi></mrow><annotation encoding="application/x-tex">F1+F2+AGE</annotation></semantics></math>
-</li>
+<li>formula = <span class="math inline">F1+F2+AGE</span> </li>
 <li>data.obs = dataInteratrix</li>
 <li>namepara1 = Parasite1</li>
 <li>namepara2 = Parasite2</li>
