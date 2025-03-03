@@ -101,7 +101,7 @@ As mentionned previously, all qualitative variables must be defined as factors (
 There are two functions, one for each method: *chi2Corr* (accounting for risk factors) and *chi2CorrAge* (accounting for risk factors and for the cumulative effect of age).
 
 The *chi2Corr* function is written:
-$chi2Corr(formula, data.obs, namepara1, namepara2, nsimu)$
+$$chi2Corr(formula, data.obs, namepara1, namepara2, nsimu)$$
 
 and takes as parameters:
 
@@ -111,7 +111,7 @@ and takes as parameters:
 - the number of simulations (an integer).
 
 The *chi2CorrAge* function is written:
-$chi2CorrAge(formula, data.obs, namepara1, namepara2, nameage, w1, w2, mort, a, nsimu, nbcore = 3)$
+$$chi2CorrAge(formula, data.obs, namepara1, namepara2, nameage, w1, w2, mort, a, nsimu, nbcore = 3)$$
 
 and takes as parameters:
 
@@ -145,7 +145,7 @@ Via command lines, the user can define the optimal number of cores allocated for
 
 Parameters taken in the example:
 
-- formula = \textquotedbl $F1+F2*F3+F4$ \textquotedbl
+- formula = \textquotedbl $$F1+F2*F3+F4$$ \textquotedbl
 - data.obs = \textquotedbl dataInteratrix\textquotedbl
 - namepara1 = \textquotedbl Parasite1\textquotedbl
 - namepara2 = \textquotedbl Parasite2\textquotedbl
@@ -176,7 +176,7 @@ The conclusion is that the proportion of doubly positive hosts can be explained 
 
 Parameters taken in the example:
 
-- formula = \textquotedbl $F1+F2+AGE$ \textquotedbl
+- formula = \textquotedbl $$F1+F2+AGE$$ \textquotedbl
 - data.obs = \textquotedbl dataInteratrix\textquotedbl
 - namepara1 = \textquotedbl Parasite1\textquotedbl
 - namepara2 = \textquotedbl Parasite2\textquotedbl
