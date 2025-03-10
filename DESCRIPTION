@@ -2,8 +2,11 @@ Package: Interatrix
 Type: Package
 Title: Compute Chi-Square Measures with Corrections
 Version: 1.1.5
-Author: Aurélie Siberchicot, Eléonore Hellard, Dominique Pontier, David Fouchet and Franck Sauvage
-Maintainer: Aurélie Siberchicot <aurelie.siberchicot@univ-lyon1.fr>
+Authors@R: c(person(given = "Aurélie", family = "Siberchicot", role = c("ctb", "cre"), email = "aurelie.siberchicot@univ-lyon1.fr", comment = c(ORCID = "0000-0002-7638-8318")),
+             person(given = "Eléonore", family = "Hellard", role = "aut"),
+             person(given = "Dominique", family = "Pontier", role = "aut"),
+             person(given = "David", family = "Fouchet", role = "aut"),
+             person(given = "Franck", family = "Sauvage", role = "aut"))
 Description: Chi-square tests are computed with corrections.
 Depends: R (>= 2.14)
 Imports: graphics, grDevices, MASS, stats, tcltk, tools, utils
